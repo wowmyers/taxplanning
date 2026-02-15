@@ -1,52 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firm Status | JL Tax Planning</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; scroll-behavior: smooth; }
-        .glass { background: rgba(255, 255, 255, 0.02); backdrop-filter: blur(25px); border: 1px solid rgba(255, 255, 255, 0.08); }
-        .emerald-glow { text-shadow: 0 0 40px rgba(16, 185, 129, 0.5); }
-        
-        /* Breathing Animation for Red Cards */
-        @keyframes breathe {
-            0% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); }
-            50% { box-shadow: 0 0 50px rgba(239, 68, 68, 0.4); border-color: rgba(239, 68, 68, 0.5); }
-            100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2); }
-        }
-        .red-breathing { animation: breathe 3s ease-in-out infinite; }
-        
-        .red-glow-bar { box-shadow: 0 0 15px rgba(239, 68, 68, 0.6); }
-        .amber-glow-bar { box-shadow: 0 0 15px rgba(251, 191, 36, 0.5); }
-        .green-glow-bar { box-shadow: 0 0 15px rgba(16, 185, 129, 0.5); }
-        .gradient-text { background: linear-gradient(180deg, #fff 0%, #717171 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    </style>
-</head>
-<body x-data="{ 
+<script src="https://cdn.tailwindcss.com"></script>
+<script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+    /* Scope everything to this ID to prevent GHL style leakage */
+    #jl-ghl-dashboard {
+        font-family: 'Inter', sans-serif !important;
+        background-color: #000 !important;
+        color: #fff !important;
+        margin: -20px; /* Counteracts GHL default padding if necessary */
+        padding: 0;
+    }
+
+    .ghl-glass { 
+        background: rgba(255, 255, 255, 0.03) !important; 
+        backdrop-filter: blur(20px) !important; 
+        border: 1px solid rgba(255, 255, 255, 0.1) !important; 
+    }
+
+    /* Breathing Animation for Red Cards */
+    @keyframes breathe {
+        0% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2) !important; }
+        50% { box-shadow: 0 0 50px rgba(239, 68, 68, 0.4); border-color: rgba(239, 68, 68, 0.6) !important; }
+        100% { box-shadow: 0 0 20px rgba(239, 68, 68, 0.1); border-color: rgba(239, 68, 68, 0.2) !important; }
+    }
+    .red-breathing { animation: breathe 3s ease-in-out infinite !important; }
+    
+    .emerald-glow { text-shadow: 0 0 40px rgba(16, 185, 129, 0.6) !important; }
+    .gradient-text { 
+        background: linear-gradient(180deg, #fff 0%, #717171 100%) !important; 
+        -webkit-background-clip: text !important; 
+        -webkit-text-fill-color: transparent !important; 
+    }
+</style>
+
+<div id="jl-ghl-dashboard" x-data="{ 
     savings: 42850900, 
     init() { setInterval(() => { this.savings += Math.floor(Math.random() * 15) + 5 }, 1500) } 
 }">
 
-    <nav class="fixed top-0 w-full z-50 glass py-5 px-10 flex justify-between items-center">
-        <div class="text-[10px] tracking-[0.4em] font-bold uppercase text-white">JL Tax Planning <span class="ml-2 text-white/30 font-light">| Internal</span></div>
-        <div class="flex gap-10 text-[10px] tracking-widest uppercase font-semibold">
-            <span class="text-emerald-500 border-b border-emerald-500 pb-1">Availability</span>
-            <span class="opacity-30 hover:opacity-100 transition cursor-pointer">Client Portals</span>
-            <span class="opacity-30 hover:opacity-100 transition cursor-pointer">Tax Intelligence</span>
-        </div>
-    </nav>
-
-    <section class="h-screen flex flex-col justify-center items-center text-center px-6">
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 py-20">
         <div class="max-w-4xl">
             <h2 class="text-[10px] uppercase tracking-[0.6em] font-bold text-emerald-500 mb-8">JL Tax Planning</h2>
-            <h1 class="text-6xl md:text-8xl font-extrabold gradient-text mb-2 tracking-tight">Tax Savings Generated.</h1>
-            <p class="text-lg text-white/30 font-light mb-16 tracking-[0.2em] uppercase">Enterprise-Wide Impact • Real Time</p>
+            <h1 class="text-5xl md:text-8xl font-extrabold gradient-text mb-2 tracking-tight">Tax Savings Generated.</h1>
+            <p class="text-sm md:text-lg text-white/30 font-light mb-16 tracking-[0.2em] uppercase">Enterprise-Wide Impact • Real Time</p>
             
-            <div class="text-7xl md:text-[11rem] font-extrabold tracking-tighter emerald-glow flex items-center justify-center">
+            <div class="text-5xl md:text-[10rem] font-extrabold tracking-tighter emerald-glow flex items-center justify-center">
                 <span class="text-emerald-500 opacity-60 mr-4 font-light">$</span>
                 <span x-text="savings.toLocaleString()"></span>
             </div>
@@ -54,155 +53,133 @@
     </section>
 
     <section class="max-w-7xl mx-auto px-10 pb-40">
-        <div class="flex justify-between items-end mb-20 border-b border-white/10 pb-10">
-            <div>
+        <div class="flex flex-col md:flex-row justify-between items-end mb-20 border-b border-white/10 pb-10">
+            <div class="text-left w-full">
                 <h2 class="text-4xl font-bold tracking-tight">CPA Strategy Desk</h2>
                 <p class="text-white/40 mt-2 font-light italic">Real-time workload allocation for senior strategists.</p>
             </div>
-            <div class="text-right">
-                <span class="text-[10px] uppercase tracking-widest text-white/40 block mb-1">Status as of</span>
-                <span class="font-mono text-sm">FEB 15, 2026 07:13 CST</span>
-            </div>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
             
-            <div class="glass p-8 rounded-[40px] red-breathing">
+            <div class="ghl-glass p-8 rounded-[40px] red-breathing">
                 <div class="flex justify-between items-start mb-10">
                     <div>
-                        <h3 class="text-xl font-bold">James N.</h3>
+                        <h3 class="text-xl font-bold text-white">James N.</h3>
                         <p class="text-[10px] uppercase tracking-widest text-white/30">Senior Partner</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-red-500 uppercase">At Capacity</span>
-                        <div class="h-2 w-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_#ef4444]"></div>
-                    </div>
+                    <span class="text-[10px] font-bold text-red-500 uppercase">At Capacity</span>
                 </div>
                 <div class="mb-8">
                     <div class="flex justify-between text-[10px] uppercase font-bold mb-3">
-                        <span class="opacity-40 tracking-widest">Workload</span>
+                        <span class="opacity-40 tracking-widest text-white">Workload</span>
                         <span class="text-red-500">96%</span>
                     </div>
-                    <div class="h-[3px] w-full bg-white/5 overflow-hidden rounded-full">
-                        <div class="h-full bg-red-500 red-glow-bar" style="width: 96%"></div>
+                    <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-red-600" style="width: 96%; box-shadow: 0 0 15px #ef4444;"></div>
                     </div>
                 </div>
-                <button class="w-full py-4 border border-white/5 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full opacity-20 cursor-not-allowed">Waitlist Only</button>
+                <button class="w-full py-4 border border-white/5 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full opacity-20 cursor-not-allowed text-white">Waitlist Only</button>
             </div>
 
-            <div class="glass p-8 rounded-[40px] red-breathing">
+            <div class="ghl-glass p-8 rounded-[40px] red-breathing">
                 <div class="flex justify-between items-start mb-10">
                     <div>
-                        <h3 class="text-xl font-bold">Matt C.</h3>
+                        <h3 class="text-xl font-bold text-white">Matt C.</h3>
                         <p class="text-[10px] uppercase tracking-widest text-white/30">Tax Attorney / CPA</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-red-500 uppercase">At Capacity</span>
-                        <div class="h-2 w-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_#ef4444]"></div>
-                    </div>
+                    <span class="text-[10px] font-bold text-red-500 uppercase">At Capacity</span>
                 </div>
                 <div class="mb-8">
                     <div class="flex justify-between text-[10px] uppercase font-bold mb-3">
-                        <span class="opacity-40 tracking-widest">Workload</span>
+                        <span class="opacity-40 tracking-widest text-white">Workload</span>
                         <span class="text-red-500">98%</span>
                     </div>
-                    <div class="h-[3px] w-full bg-white/5 overflow-hidden rounded-full">
-                        <div class="h-full bg-red-500 red-glow-bar" style="width: 98%"></div>
+                    <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-red-600" style="width: 98%; box-shadow: 0 0 15px #ef4444;"></div>
                     </div>
                 </div>
-                <button class="w-full py-4 border border-white/5 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full opacity-20 cursor-not-allowed">Waitlist Only</button>
+                <button class="w-full py-4 border border-white/5 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full opacity-20 cursor-not-allowed text-white">Waitlist Only</button>
             </div>
 
-            <div class="glass p-8 rounded-[40px]">
+            <div class="ghl-glass p-8 rounded-[40px]">
                 <div class="flex justify-between items-start mb-10">
                     <div>
-                        <h3 class="text-xl font-bold">Andy Y.</h3>
+                        <h3 class="text-xl font-bold text-white">Andy Y.</h3>
                         <p class="text-[10px] uppercase tracking-widest text-white/30">Strategist</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-amber-500 uppercase">Cautious</span>
-                        <div class="h-2 w-2 bg-amber-500 rounded-full animate-pulse shadow-[0_0_10px_#fbbf24]"></div>
-                    </div>
+                    <span class="text-[10px] font-bold text-amber-500 uppercase">Cautious</span>
                 </div>
                 <div class="mb-8">
-                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3">
-                        <span class="opacity-40 tracking-widest">Workload</span>
+                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3 text-white">
+                        <span class="opacity-40">Workload</span>
                         <span class="text-amber-500">89%</span>
                     </div>
-                    <div class="h-[3px] w-full bg-white/5 overflow-hidden rounded-full">
-                        <div class="h-full bg-amber-400 amber-glow-bar" style="width: 89%"></div>
+                    <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-amber-500" style="width: 89%;"></div>
                     </div>
                 </div>
-                <button class="w-full py-4 bg-white/5 text-white/80 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-amber-500/10 transition border border-amber-500/20">Inquiry Required</button>
+                <button class="w-full py-4 bg-white/5 text-white/80 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full border border-amber-500/20">Inquiry Required</button>
             </div>
 
-            <div class="glass p-8 rounded-[40px]">
+            <div class="ghl-glass p-8 rounded-[40px]">
                 <div class="flex justify-between items-start mb-10">
                     <div>
-                        <h3 class="text-xl font-bold">John P.</h3>
+                        <h3 class="text-xl font-bold text-white">John P.</h3>
                         <p class="text-[10px] uppercase tracking-widest text-white/30">Director</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-amber-500 uppercase">Cautious</span>
-                        <div class="h-2 w-2 bg-amber-500 rounded-full animate-pulse shadow-[0_0_10px_#fbbf24]"></div>
-                    </div>
+                    <span class="text-[10px] font-bold text-amber-500 uppercase">Cautious</span>
                 </div>
                 <div class="mb-8">
-                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3">
-                        <span class="opacity-40 tracking-widest">Workload</span>
+                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3 text-white">
+                        <span class="opacity-40">Workload</span>
                         <span class="text-amber-500">87%</span>
                     </div>
-                    <div class="h-[3px] w-full bg-white/5 overflow-hidden rounded-full">
-                        <div class="h-full bg-amber-400 amber-glow-bar" style="width: 87%"></div>
+                    <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-amber-500" style="width: 87%;"></div>
                     </div>
                 </div>
-                <button class="w-full py-4 bg-white/5 text-white/80 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-amber-500/10 transition border border-amber-500/20">Inquiry Required</button>
+                <button class="w-full py-4 bg-white/5 text-white/80 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full border border-amber-500/20">Inquiry Required</button>
             </div>
 
-            <div class="glass p-8 rounded-[40px] border-emerald-500/30 bg-white/[0.02]">
+            <div class="ghl-glass p-8 rounded-[40px] border-emerald-500/40 bg-white/[0.04]">
                 <div class="flex justify-between items-start mb-10">
                     <div>
                         <h3 class="text-xl font-bold text-emerald-400">Deanna R.</h3>
                         <p class="text-[10px] uppercase tracking-widest text-emerald-500/50">Lead Strategist</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-emerald-500 uppercase">Active Intake</span>
-                        <div class="h-2 w-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_15px_#10b981]"></div>
-                    </div>
+                    <span class="text-[10px] font-bold text-emerald-500 uppercase">Active Intake</span>
                 </div>
                 <div class="mb-8">
-                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3">
-                        <span class="opacity-40 tracking-widest text-emerald-500/40">Workload</span>
+                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3 text-white">
+                        <span class="opacity-40">Workload</span>
                         <span class="text-emerald-500 font-extrabold">78%</span>
                     </div>
-                    <div class="h-[3px] w-full bg-white/5 overflow-hidden rounded-full">
-                        <div class="h-full bg-emerald-500 green-glow-bar" style="width: 78%"></div>
+                    <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-emerald-500" style="width: 78%; box-shadow: 0 0 15px #10b981;"></div>
                     </div>
                 </div>
-                <button class="w-full py-4 bg-emerald-500 text-black text-[9px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-emerald-400 transition-all transform hover:scale-[1.02]">Secure Strategy Slot</button>
+                <button class="w-full py-4 bg-emerald-500 text-black text-[9px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-emerald-400 transition-all">Secure Strategy Slot</button>
             </div>
 
-            <div class="glass p-8 rounded-[40px]">
+            <div class="ghl-glass p-8 rounded-[40px]">
                 <div class="flex justify-between items-start mb-10">
                     <div>
-                        <h3 class="text-xl font-bold">Derek D.</h3>
+                        <h3 class="text-xl font-bold text-white">Derek D.</h3>
                         <p class="text-[10px] uppercase tracking-widest text-white/30">Senior Analyst</p>
                     </div>
-                    <div class="flex items-center gap-2">
-                        <span class="text-[10px] font-bold text-amber-500 uppercase">Cautious</span>
-                        <div class="h-2 w-2 bg-amber-500 rounded-full animate-pulse shadow-[0_0_10px_#fbbf24]"></div>
-                    </div>
+                    <span class="text-[10px] font-bold text-amber-500 uppercase">Cautious</span>
                 </div>
                 <div class="mb-8">
-                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3">
-                        <span class="opacity-40 tracking-widest">Workload</span>
+                    <div class="flex justify-between text-[10px] uppercase font-bold mb-3 text-white">
+                        <span class="opacity-40">Workload</span>
                         <span class="text-amber-500">88%</span>
                     </div>
-                    <div class="h-[3px] w-full bg-white/5 overflow-hidden rounded-full">
-                        <div class="h-full bg-amber-400 amber-glow-bar" style="width: 88%"></div>
+                    <div class="h-[3px] w-full bg-white/5 rounded-full overflow-hidden">
+                        <div class="h-full bg-amber-500" style="width: 88%;"></div>
                     </div>
                 </div>
-                <button class="w-full py-4 bg-white/5 text-white/80 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full hover:bg-amber-500/10 transition border border-amber-500/20">Inquiry Required</button>
+                <button class="w-full py-4 bg-white/5 text-white/80 text-[9px] font-bold uppercase tracking-[0.2em] rounded-full border border-amber-500/20">Inquiry Required</button>
             </div>
 
         </div>
@@ -212,5 +189,4 @@
         JL Tax Planning &copy; 2026 • Private Placement Strategy • Non-Disclosure Active
     </footer>
 
-</body>
-</html>
+</div>
